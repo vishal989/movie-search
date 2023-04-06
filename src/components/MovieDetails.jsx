@@ -9,7 +9,6 @@ function MovieDetails() {
   const { id } = params;
   // console.log(id);
 
-  // using this component we fetch details of a particular movie
   const fetchMovieDetails = async () => {
     const URL = `http://www.omdbapi.com/?i=${id}&apikey=60c72e71`;
 
@@ -26,14 +25,25 @@ function MovieDetails() {
   }, [id]);
 
   return (
-    <div className="card">
+    <div className="movie-details-card">
       <h1>{movieDetails.Title}</h1>
-      <img src={movieDetails.Poster} alt=""  />
-      <p>{movieDetails.Genre}</p>
+      <img src={movieDetails.Poster} alt="" />
+      <p>
+        <b>Genre: </b>
+        {movieDetails.Genre}
+      </p>
 
-      <p>Plot: {movieDetails.Plot}</p>
-      <p>Release Date: {movieDetails.Released}</p>
-      <p>Movie Length: {movieDetails.Runtime}</p>
+      <p>
+        <b>Plot: </b> {movieDetails.Plot}
+      </p>
+      <p>
+        <b>Release Date: </b>
+        {movieDetails.Released}
+      </p>
+      <p>
+        <b>Movie Length: </b>
+        {movieDetails.Runtime}
+      </p>
     </div>
   );
 }
