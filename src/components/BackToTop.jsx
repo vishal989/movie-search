@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 
+// this is used for scrolling up to the top using the button fixed at the right bottom cornor
 function BackToTop() {
   const [backToTopButton, setBackToTopButton] = useState(false);
   

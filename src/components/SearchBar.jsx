@@ -8,7 +8,7 @@ function SeachBar(props){
             <input type="text"
             value={props.searchTerms}
             onChange={(event) => {
-              props.setPageCount(1);
+              props.setPageCount(1)
               props.setSearchTerms(event.target.value)
             }}
             placeholder="Search a movie"

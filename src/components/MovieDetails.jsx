@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState([]);
@@ -9,6 +9,7 @@ function MovieDetails() {
   const { id } = params;
   // console.log(id);
 
+  // using this component we fetch details of a particular movie
   const fetchMovieDetails = async () => {
     const URL = `http://www.omdbapi.com/?i=${id}&apikey=60c72e71`;
 

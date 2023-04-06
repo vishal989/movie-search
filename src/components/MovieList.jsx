@@ -2,6 +2,7 @@ import React from 'react';
 import SearchBar from './SearchBar';
 import { useNavigate } from 'react-router-dom';
 
+// this is used to display the list of the movies that are fetched by the api call
 const MovieList = (props) => {
   const navigate = useNavigate();
   const routeChange = (id) => {
@@ -16,6 +17,7 @@ const MovieList = (props) => {
         searchTerms={props.searchTerms}
         setSearchTerms={props.setSearchTerms}
       />
+      
       <div>
         <button
           onClick={
