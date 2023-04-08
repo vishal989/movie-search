@@ -28,13 +28,13 @@ function BackToTop() {
             <button style={{
                 position: "fixed",
                 bottom: "50px",
-                right:  "50px",
+                right:  "30px",
                 height: "50px",
                 width: "50px",
-                fontSize: "50px"
+                fontSize: "40px"
             }}
             onClick={scrollUp}
-            ></button>
+            >^</button>
 
         )}
     </div>
