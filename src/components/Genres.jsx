@@ -3,15 +3,19 @@ import MovieList from './MovieList';
 import { useNavigate } from 'react-router-dom';
 
 function Genres(props) {
-    const navigate=useNavigate();
-    props.setClickEvent(true);
+  const navigate = useNavigate();
+  props.setClickEvent(true);
   return (
     <div>
       <div>
-        <button onClick={() => {
+        <button
+          onClick={() => {
             props.setClickEvent(false);
             navigate('/');
-        }}>home</button>
+          }}
+        >
+          home
+        </button>
       </div>
       <MovieList
         movies={props.movies}

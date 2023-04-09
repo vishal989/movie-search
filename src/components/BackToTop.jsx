@@ -28,9 +28,9 @@ function BackToTop() {
             <button style={{
                 position: "fixed",
                 bottom: "50px",
-                right:  "30px",
+                right:  "1px",
                 height: "50px",
-                width: "50px",
+                width: "70px",
                 fontSize: "40px"
             }}
             onClick={scrollUp}

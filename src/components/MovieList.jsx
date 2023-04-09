@@ -17,7 +17,7 @@ const MovieList = (props) => {
     navigate(path);
   };
 
-  console.log(query);
+  //console.log(query);
 
   useEffect(() => {
     query = props.genre;
