@@ -23,4 +23,4 @@ Clicking on one of the movie navigate us to the details of that corresponding mo
 6. Implemented pagination to display more results. ✅
 7. Implemented caching to reduce API requests. ✅
 8. User can filter the searched result by genre. ✅
-9. Implemented `back to top` button to scroll up to the top.
+9. Implemented `back to top` button to scroll up to the top. ✅
