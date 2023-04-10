@@ -57,7 +57,7 @@ function MovieDetails(props) {
           {movieDetails.Runtime}
         </p>
         <button onClick={handleYoutubeSearch}>
-          Click here to search for {searchTerm} tutorials on YouTube
+          Watch the {searchTerm} tutorial!
         </button>
       </div>
     </>
