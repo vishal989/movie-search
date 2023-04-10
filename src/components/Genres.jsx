@@ -61,12 +61,13 @@ function Genres(props) {
     <>
       <div>
         <button
+          className='home'
           onClick={() => {
             props.setClickEvent(false);
             navigate('/');
           }}
         >
-          home
+          Home
         </button>
       </div>
 

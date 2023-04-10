@@ -184,6 +184,13 @@ align-self:self-end;
   flex-direction: column;
 }
 
+.home{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
+}
+
 /* 
 .button-top{
   position: fixed;
