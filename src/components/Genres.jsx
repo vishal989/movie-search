@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import MovieList from './MovieList';
 import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import MovieList from './MovieList';
 
 function Genres(props) {
   const navigate = useNavigate();
@@ -9,15 +8,10 @@ function Genres(props) {
   props.setClickEvent(true);
 
   const routeChange = (id) => {
-    const path = `/${id}`;
+    const path = `/${props.newVal}/${id}`;
     navigate(path);
   };
 
-  // console.log('Genres', props.genre)
-
-  // const params = useParams();
-  // const { val } = params;
-  // console.log('val',val);
 
   const fetchMovieDetails = async (movie) => {
     const key = movie.imdbID;
@@ -60,7 +54,7 @@ function Genres(props) {
   //props.fetchGenre(arr);
 
   return (
-    <div>
+    <>
       <div>
         <button
           onClick={() => {
@@ -71,7 +65,19 @@ function Genres(props) {
           home
         </button>
       </div>
-      <div className="movie-list">
+
+      <MovieList
+        movies={props.movies}
+        searchTerms={props.searchTerms}
+        setSearchTerms={props.setSearchTerms}
+        pageCount={props.pageCount}
+        setPageCount={props.setPageCount}
+        genre={g}
+        clickEvent={props.clickEvent}
+        setClickEvent={props.setClickEvent}
+      />
+
+      {/* <div className="movie-list">
         <div className="movie-list-wrapper">
           {g?.map(
             (movie) => (
@@ -86,10 +92,10 @@ function Genres(props) {
             )
             //console.log('1',movie)
           )}
-          {/* {console.log('g inside div ', g)} */}
+         
         </div>
-      </div>
-    </div>
+      </div> */}
+    </>
   );
 }
 

@@ -7,7 +7,7 @@ function MovieDetails() {
 
   const params = useParams();
   const { id } = params;
-  // console.log(id);
+  console.log(id);
 
   const fetchMovieDetails = async () => {
     const URL = `http://www.omdbapi.com/?i=${id}&apikey=60c72e71`;

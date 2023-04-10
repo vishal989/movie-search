@@ -5,7 +5,7 @@ import MovieList from './components/MovieList';
 import MovieDetails from './components/MovieDetails';
 import BackToTop from './components/BackToTop';
 import './style.css';
-import Genre from './components/Genre';
+// import Genre from './components/Genre';
 import Genres from './components/Genres';
 
 const App = () => {
@@ -24,9 +24,9 @@ const App = () => {
   const fetchVal = (val) => {
     setNewVal(val);
     setClickEvent(true);
-  }
+  };
 
-   //console.log(genre);
+  //console.log(genre);
 
   const fetchMovies = async (searchTerms, pageCount) => {
     const URL = `http://www.omdbapi.com/?s=${searchTerms}&page=${pageCount}&apikey=60c72e71`;
@@ -50,39 +50,37 @@ const App = () => {
   return (
     <div className="App">
       <BackToTop />
-
+      {/* <Genre
+        movies={movies}
+        fetchGenre={fetchGenre}
+        clickEvent={clickEvent}
+        setClickEvent={setClickEvent}
+        fetchVal={fetchVal}
+      /> */}
       <BrowserRouter>
         <Routes>
-          
+          {/* <Route path="/:id" element={<MovieDetails />} /> */}
           <Route
             path="/"
             element={
-              <>
-                <Genre
-                  movies={movies}
-                  fetchGenre={fetchGenre}
-                  clickEvent={clickEvent}
-                  setClickEvent={setClickEvent}
-                  fetchVal={fetchVal}
-                />
-                <MovieList
-                  movies={movies}
-                  searchTerms={searchTerms}
-                  setSearchTerms={setSearchTerms}
-                  pageCount={pageCount}
-                  setPageCount={setPageCount}
-                  genre={genre}
-                  clickEvent={clickEvent}
-                  setClickEvent={setClickEvent}
-                />
-              </>
+              <MovieList
+                fetchVal={fetchVal}
+                movies={movies}
+                searchTerms={searchTerms}
+                setSearchTerms={setSearchTerms}
+                pageCount={pageCount}
+                setPageCount={setPageCount}
+                genre={genre}
+                clickEvent={clickEvent}
+                setClickEvent={setClickEvent}
+              />
             }
           />
           <Route
-            path="/:genre"
+            path="/genre/:genre"
             element={
               <Genres
-                fetchGenre={fetchGenre}
+                fetchVal={fetchVal}
                 movies={movies}
                 searchTerms={searchTerms}
                 setSearchTerms={setSearchTerms}
@@ -95,7 +93,7 @@ const App = () => {
               />
             }
           />
-          <Route path="/:id" element={<MovieDetails />} />
+          <Route path="/id/:id" element={<MovieDetails />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -4,16 +4,43 @@ import { useNavigate } from 'react-router-dom';
 
 const MovieList = (props) => {
   const navigate = useNavigate();
+
+  const [val, setVal] = useState('');
+  const Genres = [
+    'Action',
+    'Adventure',
+    'Comedy',
+    'Drama',
+    'Horror',
+    'Romance',
+    'Sci-Fi',
+    'Thriller',
+  ];
+  const routeChangeGenre = () => {
+    // console.log('val', val);
+    const path = `/genre/${val}`;
+    // console.log(path)
+    navigate(path);
+  };
+
+  if (val) {
+    // props.movies?.map((movie) => fetchMovieDetails(movie));
+    console.log('val', val);
+    // props.fetchGenre(arr);
+    props.fetchVal(val);
+    routeChangeGenre();
+  }
+
   var query;
   if (props.clickEvent) {
     query = props.genre;
   } else {
     query = props.movies;
   }
-  
 
   const routeChange = (id) => {
-    const path = `/${id}`;
+    const path = `/id/${id}`;
+    console.log('id', id);
     navigate(path);
   };
 
@@ -25,6 +52,21 @@ const MovieList = (props) => {
 
   return (
     <div className="movie-list">
+      {!props.clickEvent &&
+        Genres.map((item) => (
+          <button
+            key={item}
+            value={item}
+            onClick={(event) => {
+              console.log('event',event.target.value)
+              setVal(event.target.value);
+              // props.fetchVal(event.target.value);
+              // routeChangeGenre();
+            }}
+          >
+            {item}
+          </button>
+        ))}
       {!props.clickEvent && (
         <SearchBar
           setPageCount={props.setPageCount}
@@ -49,7 +91,6 @@ const MovieList = (props) => {
         </div>
       )}
       <div className="movie-list-wrapper">
-        
         {query?.map((movie) => (
           <div
             key={movie.imdbID}

@@ -10,9 +10,9 @@ function Genre(props) {
   const [val, setVal] = useState('');
 
   const routeChange = () => {
-    console.log('val', val);
+    // console.log('val', val);
     const path = `/${val}`;
-    console.log(path)
+    // console.log(path)
     navigate(path);
   };
 
@@ -75,7 +75,6 @@ function Genre(props) {
             {item}
           </button>
         ))}
-      {/* {console.log(val)} */}
 
       {!props.clickEvent && (
         <select
@@ -83,9 +82,6 @@ function Genre(props) {
           id="genre"
           onChange={(event) => {
             setVal(event.target.value);
-            
-            // props.fetchGenre(arr);
-            // routeChange();
           }}
         >
           <option value="Comedy">Comedy</option>
@@ -94,13 +90,6 @@ function Genre(props) {
           <option value="Mystery">Mystery</option>
         </select>
       )}
-      {/* {genre?.map((g) => (
-        <div key={g.imdbID}>
-          {console.log(g)}
-          <h2> {g.Title}</h2>
-          <img src={g.Poster} alt=""></img>
-        </div>
-      ))} */}
     </div>
   );
 }
