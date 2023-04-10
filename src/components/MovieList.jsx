@@ -1,33 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchBar from './SearchBar';
 import { useNavigate } from 'react-router-dom';
 
 const MovieList = (props) => {
   const navigate = useNavigate();
 
-  const [val, setVal] = useState('');
-  const Genres = [
-    'Action',
-    'Adventure',
-    'Comedy',
-    'Drama',
-    'Horror',
-    'Romance',
-    'Sci-Fi',
-    'Thriller',
-  ];
+  const [selectedOption, setSelectedOption] = useState('');
+
   const routeChangeGenre = () => {
     // console.log('val', val);
-    const path = `/genre/${val}`;
+    const path = `/genre/${selectedOption}`;
     // console.log(path)
     navigate(path);
   };
 
-  if (val) {
-    // props.movies?.map((movie) => fetchMovieDetails(movie));
-    console.log('val', val);
+  if (selectedOption) {
+    console.log('selectedOption', selectedOption);
     // props.fetchGenre(arr);
-    props.fetchVal(val);
+    props.fetchVal(selectedOption);
     routeChangeGenre();
   }
 
@@ -50,9 +40,31 @@ const MovieList = (props) => {
     query = props.genre;
   }, [props.clickEvent, props.genre]);
 
+  
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
   return (
     <div className="movie-list">
-      {!props.clickEvent &&
+      {!props.clickEvent && (
+        <select
+          value={selectedOption}
+          onChange={handleOptionChange}
+        >
+          <option value="">Genre</option>
+          <option value="Action">Action</option>
+          <option value="Adventure">Adventure</option>
+          <option value="Comedy">Comedy</option>
+          <option value="Drama">Drama</option>
+          <option value="Horror">Horror</option>
+          <option value="Romance">Romance</option>
+          <option value="Sci-Fi">Sci-Fi</option>
+          <option value="Thriller">Thriller</option>
+          <option value="Mystery">Mystery</option>
+        </select>
+      )}
+      {/* {!props.clickEvent &&
         Genres.map((item) => (
           <button
             key={item}
@@ -66,7 +78,7 @@ const MovieList = (props) => {
           >
             {item}
           </button>
-        ))}
+        ))} */}
       {!props.clickEvent && (
         <SearchBar
           setPageCount={props.setPageCount}

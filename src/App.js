@@ -12,6 +12,7 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [searchTerms, setSearchTerms] = useState('');
   const [cache, setCache] = useState({});
+  const [cacheMovieCard, setCacheMovieCard] = useState({});
   const [pageCount, setPageCount] = useState(1);
   const [genre, setGenre] = useState([]);
   const [clickEvent, setClickEvent] = useState(false);
@@ -41,6 +42,8 @@ const App = () => {
       if (data.Search) setMovies(data.Search);
     }
   };
+
+  console.log(cache);
 
   useEffect(() => {
     fetchMovies(searchTerms, pageCount);
