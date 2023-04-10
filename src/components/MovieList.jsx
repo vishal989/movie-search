@@ -30,7 +30,7 @@ const MovieList = (props) => {
 
   const routeChange = (id) => {
     const path = `/id/${id}`;
-    console.log('id', id);
+    //console.log('id', id);
     navigate(path);
   };
 

@@ -31,6 +31,28 @@ button:hover {
   color: grey;
 }
 
+select {
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  color: #555;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  padding: 10px;
+}
+
+select option {
+  background-color: #eadff3;
+  border-radius: 4px;
+  color: #555;
+}
+
+select option:hover {
+  background-color: #ccc;
+  border-radius: 4px;
+  color: #fff;
+}
+
 input {
   width: 100%;
   border: none;
@@ -39,7 +61,7 @@ input {
   font-size: 26px;
   border-radius: 20px;
   text-align: center;
-  margin: 40px 0;
+  margin: 20px 0;
   width: fit-content;
   padding: 5px 10px;
   border: 5px solid #84abba;

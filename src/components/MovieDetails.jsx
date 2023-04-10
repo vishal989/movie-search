@@ -8,7 +8,7 @@ function MovieDetails(props) {
   const params = useParams();
   const { id } = params;
   const searchTerm = movieDetails.Title + ' Trailor';
-  console.log(id);
+  //console.log(id);
 
   const handleYoutubeSearch = () => {
     window.open(`https://www.youtube.com/results?search_query=${searchTerm}`);
@@ -30,7 +30,7 @@ function MovieDetails(props) {
     // console.log(movieDetails);
   };
 
-  console.log(props.cacheMovieCard)
+  //console.log(props.cacheMovieCard)
 
   useEffect(() => {
     fetchMovieDetails();
