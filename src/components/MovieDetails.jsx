@@ -30,7 +30,7 @@ function MovieDetails(props) {
     // console.log(movieDetails);
   };
 
-  //console.log(props.cacheMovieCard)
+  console.log(props.cacheMovieCard)
 
   useEffect(() => {
     fetchMovieDetails();

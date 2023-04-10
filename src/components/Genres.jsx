@@ -12,15 +12,18 @@ function Genres(props) {
     navigate(path);
   };
 
-
   const fetchMovieDetails = async (movie) => {
     const key = movie.imdbID;
     const URL = `http://www.omdbapi.com/?i=${key}&apikey=60c72e71`;
-
-    
-    const response = await fetch(URL);
-    const data = await response.json();
-    const genreArray = await data.Genre.includes(props.newVal);
+    let genreArray = false;
+    if (props.cacheMovieCard[key]) {
+      genreArray = props.cacheMovieCard[key].Genre.includes(props.newVal);
+    } else {
+      const response = await fetch(URL);
+      const data = await response.json();
+      genreArray = await data.Genre.includes(props.newVal);
+      props.setCacheMovieCard({ ...props.cacheMovieCard, [key]: data });
+    }
 
     if (genreArray) {
       // arr.push(movie);
