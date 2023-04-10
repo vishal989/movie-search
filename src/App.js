@@ -43,7 +43,7 @@ const App = () => {
     }
   };
 
-  console.log(cache);
+  //console.log(cache);
 
   useEffect(() => {
     fetchMovies(searchTerms, pageCount);
@@ -93,10 +93,20 @@ const App = () => {
                 clickEvent={clickEvent}
                 setClickEvent={setClickEvent}
                 newVal={newVal}
+                setCacheMovieCard={setCacheMovieCard}
+                cacheMovieCard={cacheMovieCard}
               />
             }
           />
-          <Route path="/id/:id" element={<MovieDetails />} />
+          <Route
+            path="/id/:id"
+            element={
+              <MovieDetails
+                setCacheMovieCard={setCacheMovieCard}
+                cacheMovieCard={cacheMovieCard}
+              />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

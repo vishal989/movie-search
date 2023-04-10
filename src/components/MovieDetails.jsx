@@ -17,13 +17,20 @@ function MovieDetails(props) {
   const fetchMovieDetails = async () => {
     const URL = `http://www.omdbapi.com/?i=${id}&apikey=60c72e71`;
 
-    const response = await fetch(URL);
-    const data = await response.json();
-    //console.log(data.Poster);
-    setMovieDetails(data);
+    if (props.cacheMovieCard[id]) {
+      setMovieDetails(props.cacheMovieCard[id]);
+    } else {
+      const response = await fetch(URL);
+      const data = await response.json();
+      //console.log(data.Poster);
+      props.setCacheMovieCard({ ...props.cacheMovieCard, [id]: data });
+      setMovieDetails(data);
+    }
 
     // console.log(movieDetails);
   };
+
+  //console.log(props.cacheMovieCard)
 
   useEffect(() => {
     fetchMovieDetails();

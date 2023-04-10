@@ -17,6 +17,7 @@ function Genres(props) {
     const key = movie.imdbID;
     const URL = `http://www.omdbapi.com/?i=${key}&apikey=60c72e71`;
 
+    
     const response = await fetch(URL);
     const data = await response.json();
     const genreArray = await data.Genre.includes(props.newVal);
