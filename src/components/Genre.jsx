@@ -1,73 +1,95 @@
 import React, { useEffect, useState } from 'react';
 import MovieList from './MovieList';
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Genre(props) {
-  let arr = [];
+  // let arr = [];
+  
   const navigate = useNavigate();
-  //const [val, setVal] = useState('');
+
+  const [val, setVal] = useState('');
 
   const routeChange = () => {
-    const path = '/genre';
+    // console.log('val', val);
+    const path = `/${val}`;
+    // console.log(path)
     navigate(path);
   };
 
-  const fetchMovieDetails = async (movie) => {
-    const key = movie.imdbID;
-    const URL = `http://www.omdbapi.com/?i=${key}&apikey=60c72e71`;
 
-    const response = await fetch(URL);
-    const data = await response.json();
-    const genreArray = await data.Genre.includes('Action');
-    if(arr.includes(movie))console.log('Arya')
-    if (genreArray && !arr.includes(movie)) {
-      arr.push(movie);
-    }
-  };
+  // const fetchMovieDetails = async (movie) => {
+  //   const key = movie.imdbID;
+  //   const URL = `http://www.omdbapi.com/?i=${key}&apikey=60c72e71`;
 
-  useEffect(() => {
-    props.movies?.map((movie) => fetchMovieDetails(movie));
-  }, [props.movies]);
+  //   const response = await fetch(URL);
+  //   const data = await response.json();
+  //   const genreArray = await data.Genre.includes(val);
+  //   if (genreArray && !arr.includes(movie)) {
+  //     arr.push(movie);
+  //   }
+  // };
 
+  // props.movies?.map((movie) => fetchMovieDetails(movie));
+  // useEffect(() => {
+  // }, [props.movies, val]);
+
+  const Genres = [
+    'Action',
+    'Adventure',
+    'Comedy',
+    'Drama',
+    'Horror',
+    'Romance',
+    'Sci-Fi',
+    'Thriller',
+  ];
+
+  // function clickHandler(item) {
+  //   setVal(item);
+  //   console.log('val', val);
+  //   props.fetchGenre(arr);
+  //   routeChange();
+  // }
+  // console.log('val', val);
+  //console.log('vals', val);
+
+  if(val){
+    // props.movies?.map((movie) => fetchMovieDetails(movie));
+    // console.log('Array', arr);
+    // props.fetchGenre(arr);
+    props.fetchVal(val);
+    routeChange();
+  }
+  
   return (
     <div>
-      {!props.clickEvent && <button
-        onClick={() => {
-          props.fetchGenre(arr);
-          
-          routeChange()
-        }}
-      >
-        Action
-      </button>}
-      {/* <select
-        name="Genre"
-        id="genre"
-        onChange={(event) => {
-          setVal(event.target.value);
+      {!props.clickEvent &&
+        Genres.map((item) => (
+          <button
+            key={item}
+            value={item}
+            onClick={() => {
+              setVal(item);
+            }}
+          >
+            {item}
+          </button>
+        ))}
 
-          props.fetchGenre(arr);
-        }}
-      >
-        <option value="Action">Action</option>
-        <option value="Comedy">Comedy</option>
-        <option value="Horror">Horror</option>
-        <option value="Mystery">Mystery</option>
-      </select> */}
-      {/* {genre?.map((g) => (
-        <div key={g.imdbID}>
-          {console.log(g)}
-          <h2> {g.Title}</h2>
-          <img src={g.Poster} alt=""></img>
-        </div>
-      ))} */}
-      {/* <BrowserRouter>
-        <Routes>
-          <Route
-            element={<MovieList genre={genre} clickEvent={clickEvent} />}
-          />
-        </Routes>
-      </BrowserRouter> */}
+      {!props.clickEvent && (
+        <select
+          name="Genre"
+          id="genre"
+          onChange={(event) => {
+            setVal(event.target.value);
+          }}
+        >
+          <option value="Comedy">Comedy</option>
+          <option value="Action">Action</option>
+          <option value="Horror">Horror</option>
+          <option value="Mystery">Mystery</option>
+        </select>
+      )}
     </div>
   );
 }

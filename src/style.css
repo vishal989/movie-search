@@ -31,6 +31,30 @@ button:hover {
   color: grey;
 }
 
+select {
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  color: #555;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  padding: 10px;
+}
+
+select option {
+  background-color: #eadff3;
+  border-radius: 4px;
+  font-size: 20px;
+  text-align: left;
+  color: #555;
+}
+
+select option:hover {
+  background-color: #ccc;
+  border-radius: 4px;
+  color: #fff;
+}
+
 input {
   width: 100%;
   border: none;
@@ -39,8 +63,9 @@ input {
   font-size: 26px;
   border-radius: 20px;
   text-align: center;
-  margin: 40px 0;
+  margin: 20px 0;
   width: fit-content;
+  font-family: Arial, sans-serif;
   padding: 5px 10px;
   border: 5px solid #84abba;
   justify-self: center;
@@ -50,41 +75,44 @@ input::placeholder {
   text-align: center;
 }
 
-.movie-details-card {
+.movie-details-card{
   background: #84abba;
   display: flex;
-  justify-content: flex-start;
+  justify-content:flex-start;
   flex-direction: row;
   gap: 50px;
-  flex-direction: column;
+  flex-wrap: wrap;
 }
 
-.movie-details-content {
-  min-width: 300px;
-  width: 50%;
-  padding: 20px;
-  flex: 0 0 auto;
+
+.movie-details-content{
+min-width: 300px;
+width: 50%;
+padding: 20px;
+flex: 0 0 auto;
 }
 
-.movie-details-content > h1 {
-  font-weight: 500;
-  font-family: 'Times New Roman', Times, serif;
-  color: white;
-  font-size: 3rem;
+
+.movie-details-content>h1{
+ font-weight: 500;
+ font-family: 'Times New Roman', Times, serif;
+ color:  white;
+font-size: 3rem;
 }
 
-.movie-details-content > p {
-  margin: 10px 0;
-  font-family: sans-serif;
-  font-size: 1rem;
+.movie-details-content>p{
+ margin: 10px 0;
+ font-family: sans-serif;
+ font-size: 1rem;
 }
 
-.movie-details-card > img {
-  min-width: 300px;
-  border: solid 5px whitesmoke;
-  justify-items: center;
-  align-self: self-end;
+.movie-details-card>img{
+min-width:  300px;
+border: solid 5px whitesmoke;
+justify-items: center;
+align-self:self-end;
 }
+
 
 .movie-list-wrapper {
   display: flex;
@@ -166,3 +194,4 @@ input::placeholder {
   font-Size: 40px;
   padding-left:20px;
 } */
+
