@@ -3,28 +3,31 @@ import MovieList from './MovieList';
 import { useNavigate } from 'react-router-dom';
 
 function Genre(props) {
-  let arr = [];
+  // let arr = [];
   
   const navigate = useNavigate();
 
   const [val, setVal] = useState('');
 
   const routeChange = () => {
-    const path = '/genre';
+    console.log('val', val);
+    const path = `/${val}`;
+    console.log(path)
     navigate(path);
   };
 
-  const fetchMovieDetails = async (movie) => {
-    const key = movie.imdbID;
-    const URL = `http://www.omdbapi.com/?i=${key}&apikey=60c72e71`;
 
-    const response = await fetch(URL);
-    const data = await response.json();
-    const genreArray = await data.Genre.includes(val);
-    if (genreArray && !arr.includes(movie)) {
-      arr.push(movie);
-    }
-  };
+  // const fetchMovieDetails = async (movie) => {
+  //   const key = movie.imdbID;
+  //   const URL = `http://www.omdbapi.com/?i=${key}&apikey=60c72e71`;
+
+  //   const response = await fetch(URL);
+  //   const data = await response.json();
+  //   const genreArray = await data.Genre.includes(val);
+  //   if (genreArray && !arr.includes(movie)) {
+  //     arr.push(movie);
+  //   }
+  // };
 
   // props.movies?.map((movie) => fetchMovieDetails(movie));
   // useEffect(() => {
@@ -48,12 +51,13 @@ function Genre(props) {
   //   routeChange();
   // }
   // console.log('val', val);
-  console.log('vals', val);
+  //console.log('vals', val);
 
   if(val){
-    props.movies?.map((movie) => fetchMovieDetails(movie));
-    console.log('Array', arr);
-    props.fetchGenre(arr);
+    // props.movies?.map((movie) => fetchMovieDetails(movie));
+    // console.log('Array', arr);
+    // props.fetchGenre(arr);
+    props.fetchVal(val);
     routeChange();
   }
   

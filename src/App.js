@@ -19,9 +19,14 @@ const App = () => {
     setGenre(genreList);
     setClickEvent(true);
   };
-  
 
-   console.log(genre);
+  const [newVal, setNewVal] = useState([]);
+  const fetchVal = (val) => {
+    setNewVal(val);
+    setClickEvent(true);
+  }
+
+   //console.log(genre);
 
   const fetchMovies = async (searchTerms, pageCount) => {
     const URL = `http://www.omdbapi.com/?s=${searchTerms}&page=${pageCount}&apikey=60c72e71`;
@@ -48,22 +53,7 @@ const App = () => {
 
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/genre"
-            element={
-              <Genres
-                fetchGenre={fetchGenre}
-                movies={movies}
-                searchTerms={searchTerms}
-                setSearchTerms={setSearchTerms}
-                pageCount={pageCount}
-                setPageCount={setPageCount}
-                genre={genre}
-                clickEvent={clickEvent}
-                setClickEvent={setClickEvent}
-              />
-            }
-          />
+          
           <Route
             path="/"
             element={
@@ -73,6 +63,7 @@ const App = () => {
                   fetchGenre={fetchGenre}
                   clickEvent={clickEvent}
                   setClickEvent={setClickEvent}
+                  fetchVal={fetchVal}
                 />
                 <MovieList
                   movies={movies}
@@ -85,6 +76,23 @@ const App = () => {
                   setClickEvent={setClickEvent}
                 />
               </>
+            }
+          />
+          <Route
+            path="/:genre"
+            element={
+              <Genres
+                fetchGenre={fetchGenre}
+                movies={movies}
+                searchTerms={searchTerms}
+                setSearchTerms={setSearchTerms}
+                pageCount={pageCount}
+                setPageCount={setPageCount}
+                genre={genre}
+                clickEvent={clickEvent}
+                setClickEvent={setClickEvent}
+                newVal={newVal}
+              />
             }
           />
           <Route path="/:id" element={<MovieDetails />} />
