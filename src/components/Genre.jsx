@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 function Genre(props) {
   let arr = [];
+  
   const navigate = useNavigate();
 
-  let st = '';
   const [val, setVal] = useState('');
 
   const routeChange = () => {
@@ -20,17 +20,15 @@ function Genre(props) {
 
     const response = await fetch(URL);
     const data = await response.json();
-    //console.log(val)
     const genreArray = await data.Genre.includes(val);
-    //console.log(data.Genre.length)
     if (genreArray && !arr.includes(movie)) {
       arr.push(movie);
     }
   };
 
-  useEffect(() => {
-    props.movies?.map((movie) => fetchMovieDetails(movie));
-  }, [props.movies, val]);
+  // props.movies?.map((movie) => fetchMovieDetails(movie));
+  // useEffect(() => {
+  // }, [props.movies, val]);
 
   const Genres = [
     'Action',
@@ -43,49 +41,47 @@ function Genre(props) {
     'Thriller',
   ];
 
-  function clickHandler(item) {
-    setVal(item);
-    console.log('val', val);
+  // function clickHandler(item) {
+  //   setVal(item);
+  //   console.log('val', val);
+  //   props.fetchGenre(arr);
+  //   routeChange();
+  // }
+  // console.log('val', val);
+  console.log('vals', val);
+
+  if(val){
+    props.movies?.map((movie) => fetchMovieDetails(movie));
+    console.log('Array', arr);
     props.fetchGenre(arr);
     routeChange();
   }
-
-  // const getGenres = () => {
-  //   setVal(st);
-  //   console.log(val);
-  // }
-
+  
   return (
     <div>
       {!props.clickEvent &&
         Genres.map((item) => (
-          <button value={item} onClick={() => clickHandler(item)}>
+          <button
+            key={item}
+            value={item}
+            onClick={() => {
+              setVal(item);
+            }}
+          >
             {item}
           </button>
         ))}
+      {/* {console.log(val)} */}
+
       {!props.clickEvent && (
-        <button
-          onClick={() => {
-            st = 'Comedy';
-            console.log(st);
-            // setVal('Comedy');
-            // console.log(val)
-            props.fetchGenre(arr);
-            routeChange();
-          }}
-        >
-          Comedy
-        </button>
-      )}
-      {/* {!props.clickEvent && (
         <select
           name="Genre"
           id="genre"
           onChange={(event) => {
-            val = event.target.value;
-            console.log(val);
-            props.fetchGenre(arr);
-            routeChange();
+            setVal(event.target.value);
+            
+            // props.fetchGenre(arr);
+            // routeChange();
           }}
         >
           <option value="Comedy">Comedy</option>
@@ -93,7 +89,7 @@ function Genre(props) {
           <option value="Horror">Horror</option>
           <option value="Mystery">Mystery</option>
         </select>
-      )} */}
+      )}
       {/* {genre?.map((g) => (
         <div key={g.imdbID}>
           {console.log(g)}
@@ -101,13 +97,6 @@ function Genre(props) {
           <img src={g.Poster} alt=""></img>
         </div>
       ))} */}
-      {/* <BrowserRouter>
-        <Routes>
-          <Route
-            element={<MovieList genre={genre} clickEvent={clickEvent} />}
-          />
-        </Routes>
-      </BrowserRouter> */}
     </div>
   );
 }

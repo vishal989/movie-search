@@ -15,12 +15,13 @@ const App = () => {
   const [pageCount, setPageCount] = useState(1);
   const [genre, setGenre] = useState([]);
   const [clickEvent, setClickEvent] = useState(false);
-  const fetchGenre = (g) => {
-    setGenre(g);
+  const fetchGenre = (genreList) => {
+    setGenre(genreList);
     setClickEvent(true);
   };
+  
 
-  // console.log(genre);
+   console.log(genre);
 
   const fetchMovies = async (searchTerms, pageCount) => {
     const URL = `http://www.omdbapi.com/?s=${searchTerms}&page=${pageCount}&apikey=60c72e71`;
@@ -51,6 +52,7 @@ const App = () => {
             path="/genre"
             element={
               <Genres
+                fetchGenre={fetchGenre}
                 movies={movies}
                 searchTerms={searchTerms}
                 setSearchTerms={setSearchTerms}

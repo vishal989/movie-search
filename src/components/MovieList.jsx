@@ -7,10 +7,10 @@ const MovieList = (props) => {
   var query;
   if (props.clickEvent) {
     query = props.genre;
-    // props.setClickEvent(false);
   } else {
     query = props.movies;
   }
+  
 
   const routeChange = (id) => {
     const path = `/${id}`;
@@ -21,7 +21,7 @@ const MovieList = (props) => {
 
   useEffect(() => {
     query = props.genre;
-  }, [props.clickEvent]);
+  }, [props.clickEvent, props.genre]);
 
   return (
     <div className="movie-list">
