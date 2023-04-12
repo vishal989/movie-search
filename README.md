@@ -23,3 +23,6 @@ Clicking on one of the movie navigate us to the details of that corresponding mo
 8. User can filter the searched result by genre. ✅
 9. Link to trailor of the movie. ✅
 10. Implemented `back to top` button to scroll up to the top. ✅
+
+## Demonstration
+https://www.youtube.com/watch?v=MWrk53yFGAs&ab_channel=vishalarya
